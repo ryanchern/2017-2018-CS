@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(to right, #006600 30%, #00ff00);
+  font-size: 34pt;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div#title {
+  margin: 0 auto;
+  border-bottom-style: solid;
+  border-bottom-width: .2ex;
+  border-bottom-color: white;
+  width: 50%;
+}
+
+div#name {
+  padding-top: 1ex;
+  font-size: 23pt;
+  padding-bottom: 1ex;
+}
+
+div#container {
+  float: right;
+  width: 83%;
+  height: 90%;
+  border-top: .7ex solid black;
+  box-sizing: border-box;
+}
+
+div#sidebar {
+  position: relative;
+  top: -.03ex;
+  float: left;
+  background: #006600;
+  width: 17%;
+  border-right-style: solid;
+  border-right-width: .5ex;
+  border-right-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: .5ex;
+  border-bottom-color: black;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  text-decoration: none;
+}
+
+div#projects {
+  text-align: center;
+  font-size: 15pt;
+  font-weight: bold;
+  background-color: white;
+  width: 65%;
+  margin: 0 auto;
+  height: 20ex;
+  margin-top: 2ex;
+  margin-bottom: 5ex;
+}
+
+div#contentone {
+  background-color: black;
+  height: 95%;
+}
+
+div#projectone {
+  color: white;
+  text-align: right;
+  font-size: 1.5vw;
+  font-weight: 500;
+  padding-top: 3ex;
+  padding-right: 1ex;
+}
+
+div#projecttwo {
+  color: white;
+  text-align: right;
+  font-size: 1.5vw;
+  font-weight: 500;
+  padding-right: 1ex;
+}
+
+div#favorites {
+  text-align: center;
+  font-size: 15pt;
+  font-weight: bold;
+  background-color: white;
+  width: 65%;
+  height: 20ex;
+  margin: 0 auto;
+  margin-bottom: 15ex;
+}
+
+div#contenttwo {
+  background-color: black;
+  height: 95%;
+}
+
+div#favoriteone {
+  color: white;
+  text-align: right;
+  font-size: 1.5vw;
+  font-weight: 500;
+  padding-top: 3ex;
+  padding-right: 1ex;
+}
+
+div#favoritetwo {
+  color: white;
+  text-align: right;
+  font-size: 1.5vw;
+  font-weight: 500;
+  padding-right: 1ex;
+}
+
+div#favoritethree {
+  color: white;
+  text-align: right;
+  font-size: 1.5vw;
+  font-weight: 500;
+  padding-right: 1ex;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: blue;
+}
+
+#picture {
+  width: 75%;
+  margin: 0 auto;
+  display: block;
+  padding-top: 5ex;
+}
+
+div#shadowbox{
+  clear: both;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, white, black);
+}

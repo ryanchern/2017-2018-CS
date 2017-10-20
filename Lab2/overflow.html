@@ -1,0 +1,158 @@
+<html>
+
+<head>
+  <title>
+    Overflow Demonstration
+  </title>
+  <style>
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16pt;
+  }
+  div {
+    box-sizing: border-box;
+  }
+  div#UI {
+    font-size: 15pt;
+  }
+  button#reset {
+    margin-top: 3ex;
+  }
+  div#toggler {
+    margin-top: 1ex;
+  }
+  div#instructions {
+    padding-top: 5ex;
+    font-size: 12pt;
+  }
+  div#container {
+    width: 100%;
+    height: calc(100%- 5ex-1ex-3ex-header-5ex);
+    padding-top: 7ex;
+  }
+  div#pen {
+    background: navy;
+    width: 100%;
+    height: 70%;
+    position: relative;
+  }
+  footer {
+    text-align: right;
+  }
+  </style>
+</head>
+
+<body>
+  <header>
+    Overflow Demonstration
+    <div id = "UI">
+      <button id = "reset"> Reset
+      </button>
+    </div>
+    <div id = "toggler"
+    <label id = "toggleLabel" for = "toggle"> overflow: </label>
+    <select name = "toggle" id = "toggle">
+      <option value = "visible"> visible (default)</option>
+      <option value = "hidden"> hidden </option>
+      <option value = "scroll"> scroll (Mac hides scrollbar when not needed)</option>
+      <option value = "auto"> auto </option>
+    </select>
+  </div>
+  <div id = "instructions">
+    Click on the teal div and drag around to see the different overflow properties.
+  </div>
+</header>
+
+<div id = "container">
+  <div id = "pen">
+
+  </div>
+</div>
+
+<footer>
+  ©Ryan Chern 2017
+</footer>
+
+<script>
+
+
+function init() {
+  let resetBtn = document.getElementById("reset");
+  let toggle = document.getElementById('toggle');
+  let pen = document.getElementById('pen');
+
+
+
+  let div = document.createElement("div");
+  div.style.position = "absolute";
+  div.style.width = "30%";
+  div.style.height = "50%";
+  div.style.background= "teal";
+  div.style.cursor = "move";
+  pen.appendChild(div);
+
+
+  window.onload = addListeners();
+
+  function addListeners(){
+    resetBtn.addEventListener('mouseup', reset, false);
+    toggle.addEventListener('change', toggler, false);
+    toggle.addEventListener('click', toggler, false);
+  }
+
+  function reset() {
+    location.reload();
+  }
+
+  function toggler() {
+    pen.style.overflow = toggle.value;
+    console.log(toggle.value);
+  }
+
+  var selected = null;
+  let x_pos = 0;
+  let y_pos = 0;
+  let x_elem = 0;
+  let y_elem = 0;
+
+  function drag_init(element) {
+    selected = element;
+    x_element = x_pos - selected.offsetLeft;
+    y_element = y_pos - selected.offsetTop;
+  }
+
+  function move_element(e) {
+    x_pos = document.all ? window.event.clientX : e.pageX;
+    y_pos = document.all ? window.event.clientY : e.pageY;
+    if (selected !== null) {
+      selected.style.left = (x_pos - x_element) + 'px';
+      selected.style.top = (y_pos - y_element) + 'px';
+    }
+  }
+
+  function destroy() {
+    selected = null;
+  }
+
+  div.onmousedown = function () {
+    drag_init(this);
+    return false;
+  }
+
+  div.onmousemove = move_element;
+  document.onmouseup = destroy;
+}
+
+window.onload = init;
+
+</script>
+</body>
+</html>

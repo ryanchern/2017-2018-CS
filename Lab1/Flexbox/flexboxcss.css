@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, #006600 30%, #00ff00);
+  font-size: 3em;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+div#title {
+
+}
+
+div#bar {
+  font-size: 3pt;
+  border-top-style: solid;
+  border-top-width: 2ex;
+  border-top-color: white;
+  width: 30%;
+}
+
+div#name {
+  font-size: 23pt;
+  padding-top: 1ex;
+  padding-bottom: 1ex;
+}
+
+div#bigcontainer {
+  display: flex;
+  flex-direction: row;
+  word-wrap: break-word;
+}
+
+
+div#sidebar {
+  background: #006600;
+  flex-basis: 15%;
+  border-right-style: solid;
+  border-right-width: .5ex;
+  border-right-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: .5ex;
+  border-bottom-color: black;
+  box-sizing: border-box;
+
+  padding-top: 4ex;
+  padding-bottom: 4ex;
+
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+}
+
+div#projects {
+  background-color: white;
+  width: 65%;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+div#contentone {
+  background-color: black;
+}
+
+div#projectone {
+  color: white;
+  text-align: right;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-top: 4ex;
+  padding-right: 1ex;
+}
+
+div#projecttwo {
+  color: white;
+  text-align: right;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-right: 1ex;
+  padding-bottom:4ex;
+}
+
+div#favorites {
+  background-color: white;
+  width: 65%;
+  margin: 0 auto;
+  margin-top: 7ex;
+  text-align: center;
+  font-weight: bold;
+}
+
+div#contenttwo {
+  background-color: black;
+}
+
+div#favoriteone {
+  color: white;
+  text-align: right;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-right: 1ex;
+  padding-top: 4ex;
+}
+
+div#favoritetwo {
+  color: white;
+  text-align: right;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-right: 1ex;
+}
+
+div#favoritethree {
+  color: white;
+  text-align: right;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-right: 1ex;
+  padding-bottom: 4ex;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: blue;
+}
+
+div#container {
+  flex-basis: 85%;
+  border-top-style: solid;
+  border-top-width: .5ex;
+  border-top-color: black;
+  box-sizing: border-box;
+}
+
+#picture {
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 7ex;
+  padding-bottom: 5ex;
+  display: block;
+}
+
+div#shadowbox {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, white, black);
+}
