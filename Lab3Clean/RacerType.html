@@ -1,0 +1,65 @@
+<html>
+    
+    <head>
+      <link rel="stylesheet" type="text/css" href = "racertype.css" />
+    </head>
+    
+    
+    <body>
+        
+      <header>
+        RacerType
+      </header>
+      <div id = "container">
+        <div id = "instructions">
+          Type the following sentence EXACTLY as written, press the START button then start typing, press ENTER when done
+        <div id = "quote">
+            We can know only that we know nothing. And that is the highest degree of human wisdom. - War and Peace
+        </div>
+        <div id = "userinput">
+          <input type="text" id="userText" value="" onkeypress="checkCorrect()">
+        </div>
+
+        <div id = "startbutton">
+            <button type="button" onclick="start()">Start</button>
+        </div>
+      </div>
+      </div>
+    
+      <script>
+
+        var globalStartTime;
+
+        function start() {
+          console.log("start");
+          var d = new Date();
+          var n = d.getTime();
+          //console.log(n);
+          this.globalStartTime = n;
+        }
+
+        function checkCorrect() {
+          var endTime;
+          var totalTime;
+          console.log("Check correct");
+          //console.log(globalStartTime);
+          if (document.getElementById("userText").value == "We can know only that we know nothing. And that is the highest degree of human wisdom. - War and Peace") {
+            var d = new Date();
+            var n = d.getTime();
+            endTime = n;
+            totalTime = (endTime-globalStartTime);
+            //console.log(totalTime);
+
+            var convertToSecs = (totalTime/1000);
+            console.log(convertToSecs);
+            var multiplier = (60/convertToSecs);
+            console.log(multiplier);
+            alert("Words per minute: " + (20*multiplier));
+          }
+
+
+        }
+      </script>
+    </body>
+    </html>
+    
