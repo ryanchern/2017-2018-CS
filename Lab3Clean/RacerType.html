@@ -1,65 +1,135 @@
 <html>
-    
-    <head>
-      <link rel="stylesheet" type="text/css" href = "racertype.css" />
-    </head>
-    
-    
-    <body>
+
+<head>
+  <title>
+    RacerType
+  </title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 16pt;
+      padding-top: 1ex;
+
+      background-color: #34495e;
+
+
+    }
+
+    header {
+      text-align: center;
+      background-color: #3498db;
+      width: 50%;
+      border-radius: 25px;
+    }
+
+    #container {
+      background-color: #9b59b6;
+      width: 50%;
+      padding-bottom: 5ex;
+      text-align: center;
+      border-radius: 25px;
+    }
+
+    #instructions {
+      padding-top: 5ex;
+      text-align: center;
+    }
+
+    #quote {
+      padding-top: 10ex;
+      text-align: center;
+      padding-bottom: 5ex;
+    }
+
+    #userinput {
+      text-align: center;
+    }
+
+    #startbutton {
+      padding-top: 10ex;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <header>
+    RacerType
+  </header>
+  <div id="container">
+    <div id="instructions">
+      Type the following sentence EXACTLY as written, press the START button then start typing, press ENTER when done
+      <div id="quote">
+        We can know only that we know nothing. And that is the highest degree of human wisdom. - War and Peace
+      </div>
+      <div id="userinput">
+        <input type="text" id="userText" value="" onkeypress="checkCorrect()">
+      </div>
+
+      <div id="startbutton">
+        <button type="button" onclick="start()">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    var globalStartTime;
+    var globalAnswer;
+    var globalPerson;
+
+    function start() {
+      console.log("start");
+      var d = new Date();
+      var n = d.getTime();
+      //console.log(n);
+      this.globalStartTime = n;
+    }
+
+
+    function checkCorrect() {
+      var endTime;
+      var totalTime;
+      console.log("Check correct");
+      //console.log(globalStartTime);
+      if (document.getElementById("userText").value == "We can know only that we know nothing. And that is the highest degree of human wisdom. - War and Peace") {
+        var d = new Date();
+        var n = d.getTime();
+        endTime = n;
+        totalTime = (endTime - this.globalStartTime);
+        //console.log(totalTime);
+
+        var convertToSecs = (totalTime / 1000);
+        console.log(convertToSecs);
+        var multiplier = (60 / convertToSecs);
+        console.log(multiplier);
+        var answer = (20 * multiplier)
+        answer = Math.round(Number(answer));
         
-      <header>
-        RacerType
-      </header>
-      <div id = "container">
-        <div id = "instructions">
-          Type the following sentence EXACTLY as written, press the START button then start typing, press ENTER when done
-        <div id = "quote">
-            We can know only that we know nothing. And that is the highest degree of human wisdom. - War and Peace
-        </div>
-        <div id = "userinput">
-          <input type="text" id="userText" value="" onkeypress="checkCorrect()">
-        </div>
 
-        <div id = "startbutton">
-            <button type="button" onclick="start()">Start</button>
-        </div>
-      </div>
-      </div>
-    
-      <script>
-
-        var globalStartTime;
-
-        function start() {
-          console.log("start");
-          var d = new Date();
-          var n = d.getTime();
-          //console.log(n);
-          this.globalStartTime = n;
+        var person = prompt("Please enter your name:", "");
+        if (person == null || person == "") {
         }
-
-        function checkCorrect() {
-          var endTime;
-          var totalTime;
-          console.log("Check correct");
-          //console.log(globalStartTime);
-          if (document.getElementById("userText").value == "We can know only that we know nothing. And that is the highest degree of human wisdom. - War and Peace") {
-            var d = new Date();
-            var n = d.getTime();
-            endTime = n;
-            totalTime = (endTime-globalStartTime);
-            //console.log(totalTime);
-
-            var convertToSecs = (totalTime/1000);
-            console.log(convertToSecs);
-            var multiplier = (60/convertToSecs);
-            console.log(multiplier);
-            alert("Words per minute: " + (20*multiplier));
-          }
-
-
+        else {
+          this.globalPerson = person;
         }
-      </script>
-    </body>
-    </html>
-    
+        alert("Words per minute: " + answer);
+        this.globalAnswer = answer;
+      }
+
+
+
+
+    }
+  </script>
+</body>
+
+</html>
