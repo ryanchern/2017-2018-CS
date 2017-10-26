@@ -113,7 +113,7 @@
         console.log(multiplier);
         var answer = (20 * multiplier)
         answer = Math.round(Number(answer));
-        
+
 
         var person = prompt("Please enter your name:", "");
         if (person == null || person == "") {
@@ -123,12 +123,21 @@
         }
         alert("Words per minute: " + answer);
         this.globalAnswer = answer;
+
+        var content = [this.globalPerson, this.globalAnswer];
+
+        fetch("/server", {
+          method: "post",
+          headers: {"Content-Type": "application/json" },
+          body: JSON.stringify(content)
+        })/*.then(function (response) {
+          return response.json();
+        })
+        */
+        console.log("fetch complete");
       }
-
-
-
-
     }
+
   </script>
 </body>
 
