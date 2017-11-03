@@ -43,26 +43,35 @@ app.post("/server", function (req, res) {
 
             }
         }
-        /*
-        for (i=0; i<topScores.length; i++) {
-            console.log(topScores[i]);
-        }
-        */
+
     }
+
+    fs.writeFile("highscores.json", topScores, function(err) {
+
+    });
 
 
     //fs.writeFile("highscores.html", "<html> <head> <title> Highscores </title> </style>  <style> body { margin: 0; padding: 0;} div#scorelist {text-align: center; height: 100%; background-color: blue;} </style> </head> <body> <div id = "scorelist"> Test </div> </body> </html>", function (err) {
     //});
     
-    fs.writeFile("highscores.html", "<html> <head> <style> body {margin: 0; padding: 0;} div#flex {display: flex; align-items: center; justify-content: center;} div#container {display: flex; background-color: red;} </style> </head> <body> <div id='flex'> <div id='fillLeft'> </div> <div id='container'> <a href='/' class='button'>Back</a> </div> <div id='fillRight'> </div> </div> <script> function init() { let container = document.getElementById('container'); function fill() {for (i=0; i<10; i++) {console.log('herrrro');}}} window.onload = init; </script> </body> </html>", function(err) {
-    });
+    //fs.writeFile("highscores.html", "<html> <head> <style> body {margin: 0; padding: 0;} div#flex {display: flex; align-items: center; justify-content: center;} div#container {display: flex; background-color: red;} </style> </head> <body> <div id='flex'> <div id='fillLeft'> <a href='/' class='button'>Back</a> </div> <div id='container'> test </div> <div id='fillRight'> </div> </div> <script> function init() { {for (i=0; i<topScores.length; i++) {console.log('herrrro');}}} window.onload = init; </script> </body> </html>", function(err) {
+    //});
 
-    res.status(200);
-    res.end();
+    //res.status(200);
+    //res.end();
 })
 
 app.get("/highscores", function (req, res) {
-    res.sendFile(path.resolve("highscores.html"));
+    let rawdata = fs.readFileSync(path.join(__dirname+"/highscores.json"),"utf8");
+    let jsonParse = JSON.parse(rawdata);
+    //let page="<!DOCTYPE html><html><head><style> div#thing{position: fixed;bottom: 8px;right: 13px;font-family: fantasy;}body{background:PURPLE;margin:0px;}div:not(#thing){min-height:calc(100vh - 26px);border:8px solid PURPLE;background:#b7d2ff;margin:0px;padding:0px;padding-bottom:10px;display:flex;flex-direction:column;align-items:center;}p{font-family:\"Times New Roman\",Times,serif;font-size:130%;margin-top:5px;color:#1c0063;text-align:center;}p2{padding:0px;margin:0px;color:#1c0063;}a{color:BLACK;text-decoration:none;}</style></head><body><div>";
+    let page = "<html> <head> <style> body {margin: 0; padding: 0;} div#flex {display: flex; align-items: center; justify-content: center;} div#container {display: flex; background-color: red;} </style> </head> <body> <div id='flex'> <div id='fillLeft'> <a href='/' class='button'>Back</a> </div> <div id='container'>"
+    for (let i=jsonParse.topScores.length-1;i>-1;i--) {
+        page+="<p2>"+(jsonParse.topScores.length-i)+"</p2>";
+        page+="<p>"+jsonParse.topScores[i][0]+"....."+jsonParse.topScores[i][1]+"</p>";
+      }
+      page+="</div></div></body></html>";
+    res.send(page);
 })
 
 
