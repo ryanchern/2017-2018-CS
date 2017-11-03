@@ -1,14 +1,19 @@
 {
-  "name": "lab3",
+  "name": "lab3clean",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "file-system": "^2.2.2",
+    "parser-front-matter": "^1.6.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ryan Chern",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.2"
-  }
+  "author": "",
+  "license": "ISC"
 }

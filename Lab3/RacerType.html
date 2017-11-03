@@ -1,7 +1,6 @@
 <html>
 
 <head>
-
   <title>
     RacerType
   </title>
@@ -55,6 +54,7 @@
 
     #startbutton {
       padding-top: 10ex;
+      padding-bottom: 5ex;
     }
   </style>
 </head>
@@ -67,7 +67,7 @@
   </header>
   <div id="container">
     <div id="instructions">
-      Type the following sentence EXACTLY as written, press the START button then start typing, press ENTER when done
+      1) Press Start 2) Click in Text Field 3) Type the following sentence EXACTLY as written, press ENTER when done
       <div id="quote">
         We can know only that we know nothing. And that is the highest degree of human wisdom. - War and Peace
       </div>
@@ -78,12 +78,17 @@
       <div id="startbutton">
         <button type="button" onclick="start()">Start</button>
       </div>
+      <div id="highscoresbutton">
+          <a href="/highscores" class="button">Click to see highscores</a>
+      </div>
     </div>
   </div>
 
   <script>
 
     var globalStartTime;
+    var globalAnswer;
+    var globalPerson;
 
     function start() {
       console.log("start");
@@ -92,6 +97,7 @@
       //console.log(n);
       this.globalStartTime = n;
     }
+
 
     function checkCorrect() {
       var endTime;
@@ -102,18 +108,40 @@
         var d = new Date();
         var n = d.getTime();
         endTime = n;
-        totalTime = (endTime - globalStartTime);
+        totalTime = (endTime - this.globalStartTime);
         //console.log(totalTime);
 
         var convertToSecs = (totalTime / 1000);
         console.log(convertToSecs);
         var multiplier = (60 / convertToSecs);
         console.log(multiplier);
-        alert("Words per minute: " + (20 * multiplier));
+        var answer = (20 * multiplier)
+        answer = Math.round(Number(answer));
+
+
+        var person = prompt("Please enter your name:", "");
+        if (person == null || person == "") {
+        }
+        else {
+          this.globalPerson = person;
+        }
+        alert("Words per minute: " + answer);
+        this.globalAnswer = answer;
+
+        var content = [this.globalPerson, this.globalAnswer];
+
+        fetch("/server", {
+          method: "post",
+          headers: {"Content-Type": "application/json" },
+          body: JSON.stringify(content)
+        })/*.then(function (response) {
+          return response.json();
+        })
+        */
+        console.log("fetch complete");
       }
-
-
     }
+
   </script>
 </body>
 
