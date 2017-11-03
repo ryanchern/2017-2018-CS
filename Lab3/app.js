@@ -74,13 +74,13 @@ app.get("/highscores", function (req, res) {
     let jsonParse = JSON.parse(rawdata);
     //console.log(jsonParse.length);
     //let page="<!DOCTYPE html><html><head><style> div#thing{position: fixed;bottom: 8px;right: 13px;font-family: fantasy;}body{background:PURPLE;margin:0px;}div:not(#thing){min-height:calc(100vh - 26px);border:8px solid PURPLE;background:#b7d2ff;margin:0px;padding:0px;padding-bottom:10px;display:flex;flex-direction:column;align-items:center;}p{font-family:\"Times New Roman\",Times,serif;font-size:130%;margin-top:5px;color:#1c0063;text-align:center;}p2{padding:0px;margin:0px;color:#1c0063;}a{color:BLACK;text-decoration:none;}</style></head><body><div>";
-    let page = "<html> <head> <style> body {margin: 0; padding: 0;} div#flex {display: flex; flex-direction: column; align-items: center; justify-content: center;} div#container {display: flex; flex-direction: column; background: linear-gradient(to bottom, #005C97, #363795); color: white;} </style> </head> <body> <div id='flex'> <div id='fillLeft'> <a href='/' class='button'>Back</a> </div> <div id='container'>"
+    let page = "<html> <head> <style> body {margin: 0; padding: 0; background: linear-gradient(to bottom, #FC466B, #3f5efb);} div#flex {display: flex; flex-direction: column; align-items: center; justify-content: center;} div#container {display: flex; flex-direction: column;} </style> </head> <body> <div id='flex'> <div id='fillLeft'> <a href='/' class='button'>Back</a> </div> <div id='container'>"
     for (i=0; i<jsonParse.length; i++) {
         console.log(jsonParse[i]);
         console.log(jsonParse[i][0]);
         console.log(jsonParse[i][1]);
         //page+="<p2>"+(jsonParse[i])+"</p2>";
-        page+="<p>"+jsonParse[i][0]+"....."+jsonParse[i][1]+"</p>";
+        page+="<p>"+jsonParse[i][0]+"     -     "+jsonParse[i][1] + " Words per Minute" + "</p>";
       }
       page+="</div></div></body></html>";
     res.send(page);
