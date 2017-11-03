@@ -27,7 +27,7 @@ app.get("/", function (req, res) {
 });
 
 app.post("/server", function (req, res) {
-    console.log(req.body);
+    //console.log(req.body);
     if (topScores.length == 0) {
         topScores.push(req.body);
     }
@@ -43,17 +43,18 @@ app.post("/server", function (req, res) {
 
             }
         }
-        
+        /*
         for (i=0; i<topScores.length; i++) {
             console.log(topScores[i]);
         }
+        */
     }
 
 
     //fs.writeFile("highscores.html", "<html> <head> <title> Highscores </title> </style>  <style> body { margin: 0; padding: 0;} div#scorelist {text-align: center; height: 100%; background-color: blue;} </style> </head> <body> <div id = "scorelist"> Test </div> </body> </html>", function (err) {
     //});
     
-    fs.writeFile("highscores.html", "<html> <head> <style> body {margin: 0; padding: 0; text-align: center;} div#container {background-color: red; height: 100%; width 50%;} </style> </head> <body> <div id='container'> test </div> </body> </html>", function(err) {
+    fs.writeFile("highscores.html", "<html> <head> <style> body {margin: 0; padding: 0;} div#flex {display: flex; align-items: center; justify-content: center;} div#container {display: flex; background-color: red;} </style> </head> <body> <div id='flex'> <div id='fillLeft'> </div> <div id='container'> <a href='/' class='button'>Back</a> </div> <div id='fillRight'> </div> </div> <script> function init() { let container = document.getElementById('container'); function fill() {for (i=0; i<10; i++) {console.log('herrrro');}}} window.onload = init; </script> </body> </html>", function(err) {
     });
 
     res.status(200);
