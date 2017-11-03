@@ -28,6 +28,7 @@ app.get("/", function (req, res) {
 
 app.post("/server", function (req, res) {
     //console.log(req.body);
+    let x = false;
     if (topScores.length == 0) {
         topScores.push(req.body);
     }
@@ -35,13 +36,19 @@ app.post("/server", function (req, res) {
         for (i=0; i<topScores.length; i++) {
             //console.log(topScores[i][1]);
             if (req.body[1] >= topScores[i][1]) {
-                console.log("HERE");
+                x = true;
                 topScores.splice(i, 0, req.body);
                 break;
             }
             else {
 
             }
+        }
+        if (x == false) {
+            topScores.push(req.body);
+        }
+        else {
+            
         }
 
     }
